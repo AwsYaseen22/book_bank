@@ -1,26 +1,15 @@
 const express = require('express')
 const router = express.Router()
+// protect routes with middle ware 
+const {ensureAuth, ensureGuest} = require('../middleware/auth')
 
-router.get('/', async (request, response) => {
-    try {
-        response.render('pages/login.ejs')
-    } catch (error) {
-        response.status(500).send({message: error.message})
-    }
+// if the user is not logged in show him/her the login page and they cannot go to dashboard without loggin in
+router.get('/', ensureGuest, (request, response) => {
+    response.render('pages/login.ejs')
 })
-router.get('/dashboard', async (request, response) => {
-    try {
-        response.render('pages/dashboard.ejs')
-    } catch (error) {
-        response.status(500).send({message: error.message})
-    }
-})
-router.get('/login', async (request, response) => {
-    try {
-        response.render('pages/login.ejs')
-    } catch (error) {
-        response.status(500).send({message: error.message})
-    }
+// if the user logged in show him/her the dashboard instead and they cannot go to login page
+router.get('/dashboard', ensureAuth, (request, response) => {
+    response.render('pages/dashboard.ejs')
 })
 
 module.exports = router
