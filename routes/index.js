@@ -3,7 +3,7 @@ const router = express.Router()
 
 router.get('/', async (request, response) => {
     try {
-        response.render('pages/index.ejs')
+        response.render('pages/login.ejs')
     } catch (error) {
         response.status(500).send({message: error.message})
     }

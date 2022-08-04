@@ -8,5 +8,15 @@ router.get('/google', passport.authenticate('google', {scope: ['profile']}))
 router.get('/google/callback', passport.authenticate('google', {failureRedirect: '/'}), (req,res)=>{
     res.redirect('/dashboard')
 })
+// logout user (GET /auth/logout)
+router.get('/logout', (req, res) => {
+    // from passport middle ware when login we have the logout in the req automatically
+    req.logOut((err)=>{
+      if(err){
+        console.error(err)
+      }
+      res.redirect('/')
+    })
+})
 
 module.exports = router

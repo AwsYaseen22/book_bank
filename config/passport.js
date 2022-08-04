@@ -11,7 +11,6 @@ module.exports = function (passport) {
         callbackURL: '/auth/google/callback',
       },
       async (accessToken, refreshToken, profile, done) => {
-        console.log('******', {profile});
         const newUser = {
             googleId: profile.id,
             displayName: profile.displayName,
@@ -21,11 +20,12 @@ module.exports = function (passport) {
         }
 
         try {
-          let user = await User.findOne({ googleId: profile.id })
-
+          let user = await User.findOne({ googleId: profile.id }) 
+          // if the user exist int the db return it
           if (user) {
             done(null, user)
-          } else {
+          } else { 
+            // else create it in the db
             user = await User.create(newUser)
             done(null, user)
           }
