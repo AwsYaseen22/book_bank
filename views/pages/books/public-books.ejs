@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<%- include('../../partials/head'); %>
+	</head>
+
+	<body class="container">
+
+		<header>
+			<%- include('../../partials/header.ejs'); %>
+		</header>
+
+		<main>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="jumbotron">
+						<h1>The great books read by great users
+						</h1>
+						<% if (allBooks.length> 0) { %>
+							<% allBooks.forEach(b=> { %>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="card">
+											<div class="card-body">
+												<h5 class="card-title">
+													<%= b.title %>
+												</h5>
+												<p class="card-text">
+													<%= b.notes %>
+												</p>
+												<h6>
+													<%= b.user.displayName %>
+												</h6>
+												<small>
+													<%= formatDate(b.createdAt, 'DD MMMM, YYYY' ) %>
+												</small>
+												<a href="#" class="btn btn-primary">More...</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<% }) %>
+									<% } else { %>
+										<p>There are no public books to display!</p>
+										<% } %>
+					</div>
+				</div>
+
+			</div>
+		</main>
+
+		<footer>
+			<%- include('../../partials/footer.ejs'); %>
+		</footer>
+
+	</body>
+
+</html>

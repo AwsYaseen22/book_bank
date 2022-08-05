@@ -4,9 +4,28 @@ const router = express.Router();
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 const Book = require("../models/Book");
+const { formatDate } = require("../helpers/ejs");
 
 // show add new book
 router.get("/add", ensureAuth, (request, response) => {
+  response.render("pages/books/add.ejs");
+});
+
+// show public books
+router.get("/", async (request, response) => {
+  try {
+    const allBooks = await Book.find({ status: "public" })
+      .populate("user") // get the full detail of the user belongs to this book
+      .sort({ createdAt: "desc" })
+      .lean(); // return pure object
+    return response.render("pages/books/public-books", {
+      allBooks,
+      formatDate,
+    });
+  } catch (error) {
+    console.error({ error });
+    return response.render("pages/errors/500");
+  }
   response.render("pages/books/add.ejs");
 });
 
