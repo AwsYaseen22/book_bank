@@ -9,22 +9,57 @@
 
         <header>
             <%- include('../partials/header.ejs'); %>
+                <h6>Welcome <%= user.firstName %>
+                </h6>
         </header>
 
         <main>
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-12">
                     <div class="jumbotron">
-                        <h1>This is great</h1>
-                        <p>Welcome to templating using EJS</p>
+                        <h1>The great books read by <%= user.firstName %>
+                        </h1>
+                        <% if (books.length> 0) { %>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Author</th>
+                                        <th>Quotes</th>
+                                        <th>Status</th>
+                                        <th>Created At</th>
+                                    </tr>
+                                <tbody>
+                                    <% books.forEach(e=> { %>
+                                        <tr>
+                                            <td>
+                                                <%= e.title %>
+                                            </td>
+                                            <td>
+                                                <%= e.author %>
+                                            </td>
+                                            <td>
+                                                <%= e.quotes.length %>
+                                            </td>
+                                            <td>
+                                                <%= e.status %>
+                                            </td>
+                                            <td>
+                                                <%= formatDate(e.createdAt, 'DD MMMM, YYYY' ) %>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+                                </thead>
+                            </table>
+                            <% } else { %>
+                                <p>You didn't add books to your profile yet!</p>
+                                <% } %>
+                                    <!-- add button -->
+                                    <%- include('../partials/add_button.ejs') %>
                     </div>
                 </div>
 
-                <div class="col-sm-4">
-                    <div class="well">
-                        <h3>Look I'm A Sidebar!</h3>
-                    </div>
-                </div>
             </div>
         </main>
 
