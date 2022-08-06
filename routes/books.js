@@ -78,4 +78,20 @@ router.put("/:id", ensureAuth, async (request, response) => {
   }
 });
 
+// delete a book from the db
+router.delete("/:id", ensureAuth, async (request, response) => {
+  const book = await Book.findById(request.params.id).lean();
+
+  if (!book) {
+    return response.render("pages/errors/404");
+  }
+  // ensure the user logged in is the same as the book user
+  if (book.user.toJSON() !== request.user.id) {
+    response.redirect("/");
+  } else {
+    await Book.findByIdAndDelete({ _id: request.params.id });
+    response.redirect("/dashboard");
+  }
+});
+
 module.exports = router;

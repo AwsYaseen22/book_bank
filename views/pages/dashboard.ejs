@@ -61,9 +61,15 @@
                                                 <%= formatDate(e.createdAt, 'DD MMMM, YYYY' ) %>
                                             </td>
                                             <td>
-                                                <a href="books/edit/<%= e._id%>"><span class="fas fa-edit"></span></a>
-                                                <a href="books/delete/<%= e._id%>"><span
-                                                        class="fas fa-trash "></span></a>
+                                                <a href="books/edit/<%= e._id%>" class="btn-float"><span
+                                                        class="fas fa-edit"></span></a>
+
+                                                <form action="/books/<%= e._id%>" method="POST" id="delete-form">
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <button type="submit" class="btn btn-link ">
+                                                        <span class="fas fa-trash icon-red"></span>
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                         <% }) %>
