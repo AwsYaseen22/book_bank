@@ -27,7 +27,7 @@
 													<%= b.title %>
 												</h5>
 												<p class="card-text">
-													<%= b.notes %>
+													<%= truncate(b.notes, 150) %>
 												</p>
 												<h6>
 													<%= b.user.displayName %>

@@ -4,7 +4,7 @@ const router = express.Router();
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 const Book = require("../models/Book");
-const { formatDate } = require("../helpers/ejs");
+const { formatDate, truncate } = require("../helpers/ejs");
 
 // show add new book
 router.get("/add", ensureAuth, (request, response) => {
@@ -21,6 +21,7 @@ router.get("/", async (request, response) => {
     return response.render("pages/books/public-books", {
       allBooks,
       formatDate,
+      truncate,
     });
   } catch (error) {
     console.error({ error });
