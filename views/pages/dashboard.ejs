@@ -17,8 +17,18 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="jumbotron">
-                        <h1>The great books read by <%= user.firstName %>
-                        </h1>
+                        <div class="row">
+                            <div class="col-sm-11">
+                                <h1>Books read by <%= user.firstName %>
+                                </h1>
+                            </div>
+                            <div class="col-sm-1">
+                                <!-- add button -->
+                                <%- include('../partials/add_button.ejs') %>
+                            </div>
+                        </div>
+
+
                         <% if (books.length> 0) { %>
                             <table class="table table-striped">
                                 <thead>
@@ -28,12 +38,15 @@
                                         <th>Quotes</th>
                                         <th>Status</th>
                                         <th>Created At</th>
+                                        <th>Actions</th>
                                     </tr>
                                 <tbody>
                                     <% books.forEach(e=> { %>
                                         <tr>
                                             <td>
-                                                <%= e.title %>
+                                                <a href="/books/<%= e._id%>">
+                                                    <%= e.title %>
+                                                </a>
                                             </td>
                                             <td>
                                                 <%= e.author %>
@@ -47,6 +60,11 @@
                                             <td>
                                                 <%= formatDate(e.createdAt, 'DD MMMM, YYYY' ) %>
                                             </td>
+                                            <td>
+                                                <a href="books/edit/<%= e._id%>"><span class="fas fa-edit"></span></a>
+                                                <a href="books/delete/<%= e._id%>"><span
+                                                        class="fas fa-trash "></span></a>
+                                            </td>
                                         </tr>
                                         <% }) %>
                                 </tbody>
@@ -55,8 +73,7 @@
                             <% } else { %>
                                 <p>You didn't add books to your profile yet!</p>
                                 <% } %>
-                                    <!-- add button -->
-                                    <%- include('../partials/add_button.ejs') %>
+
                     </div>
                 </div>
 

@@ -44,4 +44,20 @@ router.post("/", ensureAuth, async (request, response) => {
   }
 });
 
+// show EDIT book page
+router.get("/edit/:id", ensureAuth, async (request, response) => {
+  const book = await Book.findById(request.params.id).lean();
+  console.log(book.user.toJSON());
+  console.log(request.user.id);
+  if (!book) {
+    return response.render("pages/errors/404");
+  }
+  // ensure the user logged in is the same as the book user
+  if (book.user.toJSON() !== request.user.id) {
+    response.redirect("/");
+  } else {
+    response.render("pages/books/edit.ejs", { book });
+  }
+});
+
 module.exports = router;

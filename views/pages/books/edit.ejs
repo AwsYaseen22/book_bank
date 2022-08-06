@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<%- include('../../partials/head'); %>
+	</head>
+
+	<body class="container">
+
+		<header>
+			<%- include('../../partials/header.ejs'); %>
+
+		</header>
+
+		<main>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="jumbotron">
+						<h3>Edit Book</h3>
+						<div class="row">
+							<form action="/books" method="POST">
+								<div class="form-group">
+									<label for="title">Title</label>
+									<input type="text" class="form-control" id="title" name="title" placeholder="Book title"
+										value="<%= book.title%>">
+								</div>
+								<div class="form-group">
+									<label for="author">Author</label>
+									<input type="text" class="form-control" id="author" name="author" placeholder="Book author"
+										value="<%= book.author%>">
+								</div>
+								<div class="form-group">
+									<label for="notes">Notes</label>
+									<textarea class="form-control" id="notes" name="notes" rows="3"><%= book.notes%></textarea>
+								</div>
+								<select class="custom-select" id="status" name="status">
+									<option value="public" <%=book.status==='public' ? 'selected' : '' %>>Public</option>
+									<option value="private" <%=book.status==='private' ? 'selected' : '' %>>Private</option>
+								</select>
+
+								<div class="form-group">
+									<label for="quotes">Quotes</label>
+									<textarea class="form-control" id="quotes" name="quotes" rows="3"><%= book.quotes%></textarea>
+								</div>
+
+
+								<button type="submit" class="btn btn-success">Submit</button>
+								<a href="/dashboard" class="btn btn-danger">Cancel</a>
+							</form>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</main>
+
+		<footer>
+			<%- include('../../partials/footer.ejs'); %>
+		</footer>
+
+	</body>
+
+</html>
