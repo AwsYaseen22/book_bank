@@ -24,3 +24,8 @@ p {
 .icon-red {
     color: red;
 }
+
+.small-image{
+    width: 50px;
+    border-radius: 50%;
+}

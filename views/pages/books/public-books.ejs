@@ -29,13 +29,24 @@
 												<p class="card-text">
 													<%= truncate(b.notes, 150) %>
 												</p>
-												<h6>
-													<%= b.user.displayName %>
-												</h6>
 												<small>
 													<%= formatDate(b.createdAt, 'DD MMMM, YYYY' ) %>
 												</small>
-												<a href="#" class="btn btn-primary">More...</a>
+												<div class="row">
+													<div class="col-sm-2">
+														<img src=<%=b.user.image %> alt="" class="small-image">
+													</div>
+													<div class="col-sm-10">
+														<h6>
+															Read by: <%= b.user.displayName %>
+														</h6>
+														<a href="/books/user/<%= b.user._id%>">
+															<%= b.user.firstName%>'s read list...
+														</a>
+													</div>
+												</div>
+
+												<a href="/books/<%= b._id%>" class="btn btn-primary">More...</a>
 											</div>
 										</div>
 									</div>
@@ -53,7 +64,6 @@
 		<footer>
 			<%- include('../../partials/footer.ejs'); %>
 		</footer>
-
 	</body>
 
 </html>

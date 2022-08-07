@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <%- include('../../partials/head'); %>
+    </head>
+
+    <body class="container">
+
+        <header>
+            <%- include('../../partials/header.ejs'); %>
+
+        </header>
+
+        <main>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="jumbotron">
+                        <h3>
+                            <%= book.title%>
+                        </h3>
+
+                        <small>
+                            <%= formatDate(book.createdAt, 'DD MMMM, YYYY' ) %>
+                        </small>
+
+                        <h6>Notes:</h6>
+                        <p>
+                            <%= book.title%>
+                        </p>
+
+                        <h6>Quotes:</h6>
+                        <p>
+                            <%= book.quotes%>
+                        </p>
+
+                        <h6>Created by:</h6>
+                        <p>
+                            <%= book.user.displayName %>
+                        </p>
+                        <!-- <img alt="profile picture" id="image-tag"> -->
+                        <!-- <img src="<%= image %>" class="circle responsive-img img-small"> -->
+
+
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <footer>
+            <%- include('../../partials/footer.ejs'); %>
+        </footer>
+
+        <!-- <script>
+            setTimeout( () => {
+                document.getElementById( 'image-tag' ).src = '<%= image%>'
+            }, 1000 );
+        </script> -->
+    </body>
+
+</html>
