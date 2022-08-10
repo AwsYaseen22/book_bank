@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const BookSchema = new mongoose.Schema({
+  isbn: {
+    type: String,
+    trim: true,
+  },
   title: {
     type: String,
     required: true,
@@ -15,7 +19,7 @@ const BookSchema = new mongoose.Schema({
   notes: {
     type: String,
   },
-  image: {
+  cover: {
     type: String,
   },
   status: {

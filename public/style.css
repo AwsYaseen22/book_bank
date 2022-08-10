@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 p {
     margin: 10px 0 !important;
 }
@@ -26,6 +30,34 @@ p {
 }
 
 .small-image{
-    width: 50px;
+    width: 40px;
     border-radius: 50%;
+}
+
+
+
+.custom-card-main{
+    background-color: green;
+    height: 300px;
+    border-radius: 20px;
+}
+
+.custom-card-main-row{
+    height: 100%;
+    /* border: 3px solid black; */
+}
+
+.custom-card-image{
+    /* background-color: red; */
+    height: 100%;
+
+}
+
+/* .custom-card-details{
+    background-color: yellow;
+    height: 100%;
+    width: 100px;
+} */
+.book-title{
+    color: cornflowerblue;
 }

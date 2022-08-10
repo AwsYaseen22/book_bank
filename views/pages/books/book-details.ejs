@@ -20,13 +20,18 @@
                             <%= book.title%>
                         </h3>
 
+                        <img src="<%= book.cover %>" alt="Book cover">
+                        <p>
+                            <%= book.cover %>
+                        </p>
+
                         <small>
                             <%= formatDate(book.createdAt, 'DD MMMM, YYYY' ) %>
                         </small>
 
                         <h6>Notes:</h6>
                         <p>
-                            <%= book.title%>
+                            <%= book.notes%>
                         </p>
 
                         <h6>Quotes:</h6>
@@ -38,12 +43,6 @@
                         <p>
                             <%= book.user.displayName %>
                         </p>
-                        <!-- <img alt="profile picture" id="image-tag"> -->
-                        <!-- <img src="<%= image %>" class="circle responsive-img img-small"> -->
-
-
-
-
 
                     </div>
                 </div>
