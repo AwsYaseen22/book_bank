@@ -20,51 +20,51 @@
 						<div class="row p-3 g-3">
 							<% if (allBooks.length> 0) { %>
 								<% allBooks.forEach(b=> { %>
-
-									<div class="card col-sm-12 col-md-6 col-lg-4 mb-2  "
-										style="height: 250px; min-width: 350px;">
-
-										<div class="row g-0 " style="height: 80%">
-											<div class="col-4 p-2 " style="height: 100%">
-												<img src="<%= b.cover %>" alt="book cover"
-													class="rounded-3 custom-card-image ">
-											</div>
-											<div class="col-8 card-body" style="position:relative; height: 100%">
-												<h5 class="card-title book-title">
-													<%= b.title %>
-												</h5>
-												<p class="card-text">
-													Notes: <%= truncate(b.notes, 150) %>
-												</p>
-												<p>Quotes: <%= b.quotes.length %>
-												</p>
-
-												<a href="/books/<%= b._id%>" class="btn btn-primary"
-													style="position:absolute;bottom:5px;right:5px;margin:0;">More...</a>
-											</div>
-										</div>
-										<div class="row" style="height: 20%">
-											<div class="hstack gap-3">
-												<div class="">
-													<a href="/books/user/<%= b.user._id%>">
-														<img src=<%=b.user.image %> alt="user image" class="small-image
-														p-0
-														m-0">
-													</a>
+									<div class="col-sm-12 col-md-6 col-lg-4 p-3">
+										<div class="card p-1" style="height: 250px; min-width: 350px;">
+											<div class="row g-0 " style="height: 80%">
+												<div class="col-4 p-2 " style="height: 100%">
+													<img src="<%= b.cover %>" alt="book cover"
+														class="rounded-3 custom-card-image ">
 												</div>
-												<div class="">
-													<a href="/books/user/<%= b.user._id%>">
-														<%= b.user.firstName%>'s read list...
-													</a>
-												</div>
-												<div class=" ms-auto">
-													<p class="p-0 m-0"><small class="text-muted">
-															<%= formatDate(b.createdAt, 'MMMM, YYYY' ) %>
-														</small></p>
+												<div class="col-8 card-body" style="position:relative; height: 100%">
+													<h5 class="card-title book-title">
+														<%= b.title %>
+													</h5>
+													<p class="card-text">
+														Notes: <%= truncate(b.notes, 150) %>
+													</p>
+													<p>Quotes: <%= b.quotes.length %>
+													</p>
+
+													<a href="/books/<%= b._id%>" class="btn btn-primary"
+														style="position:absolute;bottom:5px;right:5px;margin:0;">Details...</a>
 												</div>
 											</div>
+											<div class="row" style="height: 20%">
+												<div class="hstack gap-3">
+													<div class="">
+														<a href="/books/user/<%= b.user._id%>">
+															<img src=<%=b.user.image %> alt="user image"
+															class="small-image
+															p-0
+															m-0">
+														</a>
+													</div>
+													<div class="">
+														<a href="/books/user/<%= b.user._id%>">
+															<%= b.user.firstName%>'s read list...
+														</a>
+													</div>
+													<div class=" ms-auto">
+														<p class="p-0 m-0"><small class="text-muted">
+																<%= formatDate(b.createdAt, 'MMMM, YYYY' ) %>
+															</small></p>
+													</div>
+												</div>
 
 
+											</div>
 										</div>
 									</div>
 
