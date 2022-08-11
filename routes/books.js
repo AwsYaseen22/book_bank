@@ -16,14 +16,12 @@ router.get("/add", ensureAuth, (request, response) => {
 
 // get book details from google book api with axios
 router.post("/get-book-data", ensureAuth, async (req, res) => {
-  console.log("reaaaached");
   let isbn = req.body.isbn;
   try {
     const bookData = await axios.get(
       `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`
     );
     if (bookData.status === 200) {
-      // const cover = bookData.data.items[0].volumeInfo.imageLinks.thumbnail;
       const data = bookData.data.items[0].volumeInfo;
       let details = {
         isbn: isbn,
@@ -58,16 +56,8 @@ router.get("/", async (request, response) => {
 });
 
 // show selected book details
-router.get("/:id", ensureAuth, async (request, response) => {
-  let isbn = "9780141375632"; // one of us is lying
-
+router.get("/:id", async (request, response) => {
   try {
-    const bookCover = await axios.get(
-      "https://www.googleapis.com/books/v1/volumes?q=isbn:9781471156267"
-    );
-    console.log(bookCover.status);
-    const cover = bookCover.data.items[0].volumeInfo.imageLinks.thumbnail;
-    console.log(bookCover.data.items[0].volumeInfo.imageLinks.thumbnail);
     const book = await Book.findById(request.params.id)
       .populate("user") // get the full detail of the user belongs to this book
       .lean(); // return pure object
@@ -78,7 +68,6 @@ router.get("/:id", ensureAuth, async (request, response) => {
       book,
       formatDate,
       image: book.user.image,
-      bookCover: cover,
     });
   } catch (error) {
     console.error({ error });
