@@ -27,7 +27,7 @@ router.post("/get-book-data", ensureAuth, async (req, res) => {
         isbn: isbn,
         title: data.title,
         author: data.authors.join(" "),
-        cover: data.imageLinks.thumbnail,
+        cover: data.imageLinks.thumbnail.replace("http", "https"),
       };
       return res.render("pages/books/add.ejs", { details });
     }
