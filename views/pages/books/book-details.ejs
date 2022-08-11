@@ -12,45 +12,85 @@
 
         </header>
 
+
+
+
         <main>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="jumbotron">
-                        <h3>
-                            <%= book.title%>
-                        </h3>
+            <!-- Page Content -->
+            <div class="container">
 
-                        <img src="<%= book.cover %>" alt="Book cover">
-                        <p>
-                            <%= book.cover %>
-                        </p>
 
-                        <small>
-                            <%= formatDate(book.createdAt, 'DD MMMM, YYYY' ) %>
-                        </small>
+                <!-- Portfolio Item Row -->
+                <div class="row p-5">
 
-                        <h6>Notes:</h6>
-                        <p>
-                            <%= book.notes%>
-                        </p>
-
-                        <h6>Quotes:</h6>
-                        <p>
-                            <%= book.quotes%>
-                        </p>
-
-                        <h6>Created by:</h6>
-                        <p>
-                            <%= book.user.displayName %>
-                        </p>
-
+                    <div class="col-md-3">
+                        <img class="img-fluid d-block mx-auto shadow "
+                            src=" <%=book.cover ? book.cover : '/images/no-image.png' %>" alt="Book cover">
                     </div>
+
+                    <div class="col-md-9">
+                        <div class="p-4 mb-3 bg-light rounded ">
+                            <h3 class="my-3">
+                                <%= book.title%>
+                            </h3>
+                            <h5>
+                                By: <%= book.author%>
+                            </h5>
+                            <hr>
+                            <dl class="row">
+                                <dt class="col-2">Read by:</dt>
+                                <dd class="col-10">
+                                    <%= book.user.displayName %> -
+                                        <small>
+                                            <%= formatDate(book.createdAt, 'DD MMMM, YYYY' ) %>
+                                        </small>
+                                </dd>
+                            </dl>
+
+                        </div>
+
+                        <br>
+                        <div class="p-4 mb-3 bg-light rounded ">
+                            <h5>
+                                Notes:
+                            </h5>
+                            <p>
+                                <%= book.notes%>
+                            </p>
+                        </div>
+                        <div class="p-4 mb-3 bg-light rounded ">
+                            <h3 class="my-3">Quotes:</h3>
+                            <ul>
+                                <li>
+                                    <%= book.quotes%>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
                 </div>
+                <!-- /.row -->
+
+
 
             </div>
+            <!-- /.container -->
+
         </main>
 
-        <footer>
+
+
+
+
+
+
+
+
+
+
+
+
+        <footer class="fixed-bottom">
             <%- include('../../partials/footer.ejs'); %>
         </footer>
 

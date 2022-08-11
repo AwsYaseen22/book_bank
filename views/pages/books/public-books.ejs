@@ -23,8 +23,8 @@
 										<div class="card p-1" style="height: 250px; min-width: 350px;">
 											<div class="row g-0 " style="height: 80%">
 												<div class="col-4 p-2 " style="height: 100%">
-													<img src="<%= b.cover %>" alt="book cover"
-														class="rounded-3 custom-card-image ">
+													<img src="<%= b.cover ? b.cover : '/images/no-image.png' %>"
+														alt="book cover" class="rounded-3 custom-card-image shadow">
 												</div>
 												<div class="col-8 card-body" style="position:relative; height: 100%">
 													<h5 class="card-title book-title">
@@ -36,8 +36,9 @@
 													<p>Quotes: <%= b.quotes.length %>
 													</p>
 
-													<a href="/books/<%= b._id%>" class="btn btn-primary"
-														style="position:absolute;bottom:5px;right:5px;margin:0;">Details...</a>
+													<a href="/books/<%= b._id%>"
+														class="btn btn-outline-primary rounded-pill"
+														style="position:absolute;bottom:5px;right:5px;margin:0;">more...</a>
 												</div>
 											</div>
 											<div class="row" style="height: 20%">
