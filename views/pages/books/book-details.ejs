@@ -9,27 +9,21 @@
 
         <header>
             <%- include('../../partials/header.ejs'); %>
-
         </header>
 
+        <main class="mb-5 mt-5">
 
-
-
-        <main>
-            <!-- Page Content -->
             <div class="container">
 
+                <div class="row mt-5">
 
-                <!-- Portfolio Item Row -->
-                <div class="row p-5">
-
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-sm-12 ">
                         <img class="img-fluid d-block mx-auto shadow "
                             src=" <%=book.cover ? book.cover : '/images/no-image.png' %>" alt="Book cover">
                     </div>
 
-                    <div class="col-md-9">
-                        <div class="p-4 mb-3 bg-light rounded ">
+                    <div class="col-md-9 ">
+                        <div class=" p-4 mb-3 bg-light rounded ">
                             <h3 class="my-3">
                                 <%= book.title%>
                             </h3>
@@ -98,51 +92,17 @@
                                     </div>
                                 </div>
                                 <% }) %>
-
-
-
-
-                                    <!-- <ul>
-                                <% book.quotes.forEach(quote=> { %>
-                                    <li>
-                                        <%= quote%>
-                                    </li>
-                                    <% }) %>
-                            </ul> -->
                         </div>
                     </div>
-
                 </div>
-                <!-- /.row -->
-
-
-
             </div>
-            <!-- /.container -->
 
         </main>
-
-
-
-
-
-
-
-
-
-
-
-
 
         <footer class="fixed-bottom">
             <%- include('../../partials/footer.ejs'); %>
         </footer>
 
-        <!-- <script>
-            setTimeout( () => {
-                document.getElementById( 'image-tag' ).src = '<%= image%>'
-            }, 1000 );
-        </script> -->
     </body>
 
 </html>
