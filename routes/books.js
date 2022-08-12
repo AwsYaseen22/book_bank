@@ -98,6 +98,12 @@ router.get("/user/:id", async (request, response) => {
 
 // save new book to the db
 router.post("/", ensureAuth, async (request, response) => {
+  // collect quotes and put them in one array quotes
+  request.body.quotes = [];
+  for (let i = 1; i <= 5; i++) {
+    request.body.quotes.push(request.body[`quote${i}`]);
+    delete request.body[`quote${i}`];
+  }
   try {
     // get the user id to attached it with the book model
     request.body.user = request.user.id;
@@ -132,6 +138,11 @@ router.get("/edit/:id", ensureAuth, async (request, response) => {
 
 // edit the book on the db
 router.put("/:id", ensureAuth, async (request, response) => {
+  request.body.quotes = [];
+  for (let i = 1; i <= 5; i++) {
+    request.body.quotes.push(request.body[`quote${i}`]);
+    delete request.body[`quote${i}`];
+  }
   try {
     const book = await Book.findById(request.params.id).lean();
 
@@ -142,6 +153,7 @@ router.put("/:id", ensureAuth, async (request, response) => {
     if (book.user.toJSON() !== request.user.id) {
       response.redirect("/");
     } else {
+      console.log("***", request.body);
       await Book.findByIdAndUpdate({ _id: request.params.id }, request.body, {
         new: true,
         runValidators: true,
