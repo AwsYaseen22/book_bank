@@ -52,7 +52,7 @@
                                                 <%= e.author %>
                                             </td>
                                             <td>
-                                                <%= e.quotes.length %>
+                                                <%= e.quotes.filter(q=> q.length > 0).length %>
                                             </td>
                                             <td>
                                                 <%= e.status %>

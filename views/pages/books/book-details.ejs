@@ -68,7 +68,7 @@
                         <div class="p-4 mb-3 bg-light rounded ">
                             <h3 class="my-3 ps-4">Quotes:</h3>
 
-                            <% book.quotes.forEach(quote=> { %>
+                            <% book.quotes.filter(q=> q.length > 0).forEach(quote=> { %>
                                 <div class="container py-2 h-100">
                                     <div class="row d-flex justify-content-center align-items-center h-100">
                                         <div class="col-12">

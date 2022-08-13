@@ -31,9 +31,9 @@
 														<%= b.title %>
 													</h5>
 													<p class="card-text">
-														Notes: <%= truncate(b.notes, 150) %>
+														Notes: <%= truncate(b.notes, 75) %>
 													</p>
-													<p>Quotes: <%= b.quotes.length %>
+													<p>Quotes: <%= b.quotes.filter(n=> n.length >0).length %>
 													</p>
 
 													<a href="/books/<%= b._id%>"
